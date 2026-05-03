@@ -1,0 +1,24 @@
+@{ ViewData["Title"] = "Reports"; ViewData["Breadcrumb"] = "Reports"; }
+<div class="page-header"><h1><i class="bi bi-bar-chart-line me-2"></i>Reports</h1></div>
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center p-5">
+                <i class="bi bi-calendar-check" style="font-size:48px;color:var(--primary)"></i>
+                <h4 class="mt-3">Appointments Report</h4>
+                <p class="text-muted">View and export appointment data by date, doctor, and status.</p>
+                <a href="/Report/Appointments" class="btn btn-primary"><i class="bi bi-arrow-right"></i> View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center p-5">
+                <i class="bi bi-cash-stack" style="font-size:48px;color:var(--success)"></i>
+                <h4 class="mt-3">Revenue Report</h4>
+                <p class="text-muted">Analyze revenue by month, doctor, and payment status.</p>
+                <a href="/Report/Revenue" class="btn btn-success"><i class="bi bi-arrow-right"></i> View Report</a>
+            </div>
+        </div>
+    </div>
+</div>

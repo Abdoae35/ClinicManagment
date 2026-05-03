@@ -1,0 +1,118 @@
+@model ClinicManagement.Models.ViewModels.DashboardViewModel
+@{ ViewData["Title"] = "Dashboard"; ViewData["Breadcrumb"] = "Dashboard"; }
+<div class="page-header">
+    <h1><i class="bi bi-grid-1x2 me-2"></i>Dashboard</h1>
+    <div>
+        <a href="/Appointment/Create" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> New Appointment</a>
+        <a href="/Patient/Create" class="btn btn-secondary btn-sm ms-2"><i class="bi bi-person-plus"></i> Add Patient</a>
+    </div>
+</div>
+
+<!-- KPI Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card primary">
+            <div class="stat-icon"><i class="bi bi-people"></i></div>
+            <div class="stat-value">@Model.TotalPatients</div>
+            <div class="stat-label">Total Patients</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card success">
+            <div class="stat-icon"><i class="bi bi-calendar-check"></i></div>
+            <div class="stat-value">@Model.TodayAppointments</div>
+            <div class="stat-label">Today's Appointments</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card warning">
+            <div class="stat-icon"><i class="bi bi-person-badge"></i></div>
+            <div class="stat-value">@Model.AvailableDoctors</div>
+            <div class="stat-label">Available Doctors</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card danger">
+            <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+            <div class="stat-value">@Model.PendingInvoices</div>
+            <div class="stat-label">Pending Invoices</div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts -->
+<div class="row g-3 mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Appointments (Last 7 Days)</div>
+            <div class="card-body"><canvas id="barChart" height="280"></canvas></div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">By Status</div>
+            <div class="card-body"><canvas id="pieChart" height="280"></canvas></div>
+        </div>
+    </div>
+</div>
+
+<!-- Today's Appointments -->
+<div class="card">
+    <div class="card-header">
+        <span><i class="bi bi-clock me-2"></i>Today's Appointments</span>
+        <a href="/Appointment/List" class="btn btn-sm btn-secondary">View All</a>
+    </div>
+    <div class="card-body">
+        @if (Model.TodayAppointmentsList.Any())
+        {
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead><tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody>
+                    @foreach (var a in Model.TodayAppointmentsList)
+                    {
+                        <tr>
+                            <td>@a.AppointmentTime.ToString(@"hh\:mm")</td>
+                            <td>@a.Patient.User.FullName</td>
+                            <td>@a.Doctor.User.FullName</td>
+                            <td><span class="badge-status badge-@a.Status.ToString().ToLower()">@a.Status</span></td>
+                            <td><a href="/Appointment/Details/@a.AppointmentId" class="btn btn-sm btn-secondary">View</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="empty-state"><i class="bi bi-calendar-x"></i><h5>No appointments today</h5></div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Bar Chart
+    new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AppointmentsPerDay.Keys)),
+            datasets: [{ label: 'Appointments', data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AppointmentsPerDay.Values)),
+                backgroundColor: 'rgba(0,119,182,0.7)', borderRadius: 8, borderSkipped: false }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+    });
+
+    // Pie Chart
+    const statusColors = { 'Scheduled':'#0077B6','Confirmed':'#00B4D8','Completed':'#2DC653','Cancelled':'#E63946','NoShow':'#FFC300' };
+    new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AppointmentsByStatus.Keys)),
+            datasets: [{ data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AppointmentsByStatus.Values)),
+                backgroundColor: Object.keys(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AppointmentsByStatus))).map(k => statusColors[k] || '#ccc') }]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    });
+</script>
+}

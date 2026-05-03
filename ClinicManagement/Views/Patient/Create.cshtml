@@ -1,0 +1,32 @@
+@model ClinicManagement.Models.ViewModels.PatientCreateViewModel
+@{ ViewData["Title"] = "Add Patient"; ViewData["Breadcrumb"] = "Add Patient"; }
+<div class="page-header"><h1><i class="bi bi-person-plus me-2"></i>Add Patient</h1></div>
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create" method="post" data-loading>
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+            <h6 class="mb-3">Personal Information</h6>
+            <div class="row">
+                <div class="col-md-4 form-group"><label class="form-label">Full Name *</label><input asp-for="FullName" class="form-control" /><span asp-validation-for="FullName" class="text-danger"></span></div>
+                <div class="col-md-4 form-group"><label class="form-label">Email *</label><input asp-for="Email" class="form-control" /><span asp-validation-for="Email" class="text-danger"></span></div>
+                <div class="col-md-4 form-group"><label class="form-label">Phone</label><input asp-for="PhoneNumber" class="form-control" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group"><label class="form-label">Gender</label><select asp-for="Gender" asp-items="Html.GetEnumSelectList<ClinicManagement.Models.Enums.Gender>()" class="form-select"><option value="">Select</option></select></div>
+                <div class="col-md-4 form-group"><label class="form-label">Date of Birth</label><input asp-for="DateOfBirth" type="date" class="form-control" /></div>
+                <div class="col-md-4 form-group"><label class="form-label">Blood Type</label><select asp-for="BloodType" asp-items="Html.GetEnumSelectList<ClinicManagement.Models.Enums.BloodType>()" class="form-select"><option value="">Select</option></select></div>
+            </div>
+            <div class="form-group"><label class="form-label">Address</label><textarea asp-for="Address" class="form-control" rows="2"></textarea></div>
+            <hr /><h6 class="mb-3">Emergency & Insurance</h6>
+            <div class="row">
+                <div class="col-md-3 form-group"><label class="form-label">Emergency Contact</label><input asp-for="EmergencyContactName" class="form-control" /></div>
+                <div class="col-md-3 form-group"><label class="form-label">Emergency Phone</label><input asp-for="EmergencyContactPhone" class="form-control" /></div>
+                <div class="col-md-3 form-group"><label class="form-label">Insurance #</label><input asp-for="InsuranceNumber" class="form-control" /></div>
+                <div class="col-md-3 form-group"><label class="form-label">Provider</label><input asp-for="InsuranceProvider" class="form-control" /></div>
+            </div>
+            <div class="form-group"><label class="form-label">Medical History</label><textarea asp-for="MedicalHistory" class="form-control" rows="3"></textarea></div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Create Patient</button>
+            <a href="/Patient" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    </div>
+</div>

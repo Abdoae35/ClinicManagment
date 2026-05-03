@@ -1,0 +1,44 @@
+@model ClinicManagement.Models.Entities.Invoice
+@{ ViewData["Title"] = "Invoice Details"; ViewData["Breadcrumb"] = "Invoice"; }
+<div class="page-header">
+    <h1><i class="bi bi-receipt me-2"></i>Invoice #@Model.InvoiceId</h1>
+    <a href="/Invoice/Print/@Model.InvoiceId" class="btn btn-secondary btn-sm" target="_blank"><i class="bi bi-printer"></i> Print</a>
+</div>
+<div class="row g-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-3"><div class="col-4 text-muted">Patient</div><div class="col-8">@Model.Patient.User.FullName</div></div>
+                <div class="row mb-3"><div class="col-4 text-muted">Doctor</div><div class="col-8">@Model.Appointment.Doctor.User.FullName</div></div>
+                <div class="row mb-3"><div class="col-4 text-muted">Date</div><div class="col-8">@Model.InvoiceDate.ToString("MMM dd, yyyy")</div></div>
+                <div class="row mb-3"><div class="col-4 text-muted">Due Date</div><div class="col-8">@(Model.DueDate?.ToString("MMM dd, yyyy") ?? "N/A")</div></div>
+                <hr />
+                <div class="row mb-2"><div class="col-4 text-muted">Consultation Fee</div><div class="col-8">$@Model.TotalAmount</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Discount</div><div class="col-8">$@Model.Discount</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted"><strong>Net Amount</strong></div><div class="col-8"><strong>$@(Model.TotalAmount - Model.Discount)</strong></div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Paid</div><div class="col-8">$@Model.PaidAmount</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Status</div><div class="col-8"><span class="badge-status badge-@Model.PaymentStatus.ToString().ToLower()">@Model.PaymentStatus</span></div></div>
+                @if (!string.IsNullOrEmpty(Model.PaymentMethod))
+                { <div class="row mb-2"><div class="col-4 text-muted">Method</div><div class="col-8">@Model.PaymentMethod</div></div> }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        @if (Model.PaymentStatus != ClinicManagement.Models.Enums.PaymentStatus.Paid)
+        {
+            <div class="card">
+                <div class="card-header">Record Payment</div>
+                <div class="card-body">
+                    <form asp-action="MarkPaid" method="post">
+                        <input type="hidden" name="id" value="@Model.InvoiceId" />
+                        <div class="form-group"><label class="form-label">Amount</label><input name="paidAmount" type="number" step="0.01" value="@(Model.TotalAmount - Model.Discount)" class="form-control" /></div>
+                        <div class="form-group"><label class="form-label">Method</label>
+                            <select name="paymentMethod" class="form-select"><option>Cash</option><option>Card</option><option>Transfer</option><option>Insurance</option></select>
+                        </div>
+                        <button class="btn btn-success w-100"><i class="bi bi-check-lg"></i> Mark Paid</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

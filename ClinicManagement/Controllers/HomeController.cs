@@ -1,31 +1,17 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using ClinicManagement.Models;
 
-namespace ClinicManagement.Controllers;
-
-public class HomeController : Controller
+namespace ClinicManagement.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        public IActionResult Index()
+        {
+            if (User.Identity?.IsAuthenticated == true)
+                return RedirectToAction("Index", "Dashboard");
+            return View();
+        }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error404() => View();
+        public IActionResult Error500() => View();
     }
 }

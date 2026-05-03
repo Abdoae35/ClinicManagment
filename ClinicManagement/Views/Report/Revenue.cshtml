@@ -1,0 +1,28 @@
+@model ClinicManagement.Models.ViewModels.ReportFilterViewModel
+@{ ViewData["Title"] = "Revenue Report"; ViewData["Breadcrumb"] = "Revenue Report"; }
+<div class="page-header"><h1><i class="bi bi-cash-stack me-2"></i>Revenue Report</h1></div>
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-md-2"><label class="form-label">From</label><input name="from" type="date" value="@Model.FromDate?.ToString("yyyy-MM-dd")" class="form-control" /></div>
+            <div class="col-md-2"><label class="form-label">To</label><input name="to" type="date" value="@Model.ToDate?.ToString("yyyy-MM-dd")" class="form-control" /></div>
+            <div class="col-md-3"><label class="form-label">Doctor</label>
+                <select name="doctorId" class="form-select"><option value="">All</option>
+                @if(Model.Doctors!=null){foreach(var d in Model.Doctors){<option value="@d.DoctorId" selected="@(Model.DoctorId==d.DoctorId)">@d.User.FullName</option>}}</select></div>
+            <div class="col-md-2"><button class="btn btn-primary w-100">Filter</button></div>
+            <div class="col-md-2"><a href="/Report/ExportRevenue?from=@Model.FromDate?.ToString("yyyy-MM-dd")&to=@Model.ToDate?.ToString("yyyy-MM-dd")&doctorId=@Model.DoctorId" class="btn btn-success w-100"><i class="bi bi-file-earmark-excel"></i> Excel</a></div>
+        </form>
+    </div>
+</div>
+@if (Model.ReportData != null)
+{
+    var invoices = (IEnumerable<ClinicManagement.Models.Entities.Invoice>)Model.ReportData;
+    <div class="card"><div class="card-body">
+    <table class="table data-table"><thead><tr><th>Date</th><th>Patient</th><th>Doctor</th><th>Total</th><th>Paid</th><th>Status</th></tr></thead>
+    <tbody>
+    @foreach(var i in invoices)
+    { <tr><td>@i.InvoiceDate.ToString("MMM dd, yyyy")</td><td>@i.Patient.User.FullName</td><td>@i.Appointment.Doctor.User.FullName</td><td>$@i.TotalAmount</td><td>$@i.PaidAmount</td><td><span class="badge-status badge-@i.PaymentStatus.ToString().ToLower()">@i.PaymentStatus</span></td></tr> }
+    </tbody></table>
+    <div class="mt-3 p-3" style="background:var(--bg-light);border-radius:8px"><strong>Total Revenue: $@invoices.Sum(i => i.PaidAmount)</strong></div>
+    </div></div>
+}

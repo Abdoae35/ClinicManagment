@@ -1,0 +1,35 @@
+@model IEnumerable<ClinicManagement.Models.Entities.Invoice>
+@{ ViewData["Title"] = "Invoices"; ViewData["Breadcrumb"] = "Invoices"; }
+<div class="page-header"><h1><i class="bi bi-receipt me-2"></i>Invoices</h1></div>
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <a href="/Invoice" class="btn btn-sm @(ViewBag.Status == null ? "btn-primary" : "btn-secondary")">All</a>
+            <a href="/Invoice?status=0" class="btn btn-sm @(ViewBag.Status != null && (int)ViewBag.Status == 0 ? "btn-warning" : "btn-secondary")">Pending</a>
+            <a href="/Invoice?status=1" class="btn btn-sm @(ViewBag.Status != null && (int)ViewBag.Status == 1 ? "btn-success" : "btn-secondary")">Paid</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="table data-table">
+                <thead><tr><th>#</th><th>Date</th><th>Patient</th><th>Doctor</th><th>Amount</th><th>Paid</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                @foreach (var inv in Model)
+                {
+                    <tr>
+                        <td>@inv.InvoiceId</td>
+                        <td>@inv.InvoiceDate.ToString("MMM dd, yyyy")</td>
+                        <td>@inv.Patient.User.FullName</td>
+                        <td>@inv.Appointment.Doctor.User.FullName</td>
+                        <td>$@inv.TotalAmount</td>
+                        <td>$@inv.PaidAmount</td>
+                        <td><span class="badge-status badge-@inv.PaymentStatus.ToString().ToLower()">@inv.PaymentStatus</span></td>
+                        <td>
+                            <a href="/Invoice/Details/@inv.InvoiceId" class="btn btn-sm btn-secondary"><i class="bi bi-eye"></i></a>
+                            <a href="/Invoice/Print/@inv.InvoiceId" class="btn btn-sm btn-secondary" target="_blank"><i class="bi bi-printer"></i></a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

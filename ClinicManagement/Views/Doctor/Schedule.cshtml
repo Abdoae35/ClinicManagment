@@ -1,0 +1,30 @@
+@model ClinicManagement.Models.ViewModels.DoctorScheduleViewModel
+@{ ViewData["Title"] = "Manage Schedule"; ViewData["Breadcrumb"] = "Doctor Schedule"; }
+<div class="page-header"><h1><i class="bi bi-clock me-2"></i>Schedule — @Model.DoctorName</h1></div>
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Schedule" method="post">
+            <input type="hidden" asp-for="DoctorId" />
+            <table class="table">
+                <thead><tr><th>Day</th><th>Active</th><th>Start Time</th><th>End Time</th><th>Slot (min)</th></tr></thead>
+                <tbody>
+                @for (int i = 0; i < Model.Schedules.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input type="hidden" name="Schedules[@i].DayOfWeek" value="@Model.Schedules[i].DayOfWeek" />
+                            <strong>@Model.Schedules[i].DayOfWeek</strong>
+                        </td>
+                        <td><input type="checkbox" name="Schedules[@i].IsActive" value="true" @(Model.Schedules[i].IsActive ? "checked" : "") class="form-check-input" /></td>
+                        <td><input type="time" name="Schedules[@i].StartTime" value="@Model.Schedules[i].StartTime.ToString(@"hh\:mm")" class="form-control" style="width:150px" /></td>
+                        <td><input type="time" name="Schedules[@i].EndTime" value="@Model.Schedules[i].EndTime.ToString(@"hh\:mm")" class="form-control" style="width:150px" /></td>
+                        <td><input type="number" name="Schedules[@i].SlotDurationMinutes" value="@Model.Schedules[i].SlotDurationMinutes" class="form-control" style="width:100px" min="5" max="120" /></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Save Schedule</button>
+            <a href="/Doctor/Details/@Model.DoctorId" class="btn btn-secondary ms-2">Back</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+@model IEnumerable<ClinicManagement.Models.Entities.Appointment>
+@{ ViewData["Title"] = "Appointments List"; ViewData["Breadcrumb"] = "Appointments"; }
+<div class="page-header">
+    <h1><i class="bi bi-list-ul me-2"></i>Appointments List</h1>
+    <div>
+        <a href="/Appointment" class="btn btn-secondary btn-sm"><i class="bi bi-calendar"></i> Calendar</a>
+        <a href="/Appointment/Create" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> New</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-wrapper">
+            <table class="table data-table">
+                <thead><tr><th>Date</th><th>Time</th><th>Patient</th><th>Doctor</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                @foreach (var a in Model)
+                {
+                    <tr>
+                        <td>@a.AppointmentDate.ToString("MMM dd, yyyy")</td>
+                        <td>@a.AppointmentTime.ToString(@"hh\:mm")</td>
+                        <td>@a.Patient.User.FullName</td>
+                        <td>@a.Doctor.User.FullName</td>
+                        <td><span class="badge-status badge-@a.Status.ToString().ToLower()">@a.Status</span></td>
+                        <td>
+                            <a href="/Appointment/Details/@a.AppointmentId" class="btn btn-sm btn-secondary"><i class="bi bi-eye"></i></a>
+                            <a href="/Appointment/Edit/@a.AppointmentId" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

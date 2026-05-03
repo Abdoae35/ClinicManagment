@@ -1,0 +1,44 @@
+@model IEnumerable<ClinicManagement.Models.Entities.Doctor>
+@{ ViewData["Title"] = "Doctors"; ViewData["Breadcrumb"] = "Doctors"; }
+<div class="page-header">
+    <h1><i class="bi bi-person-badge me-2"></i>Doctors</h1>
+    <a href="/Doctor/Create" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Doctor</a>
+</div>
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-md-4">
+                <input name="search" value="@ViewBag.Search" class="form-control" placeholder="Search by name..." />
+            </div>
+            <div class="col-md-3">
+                <select name="specializationId" class="form-select">
+                    <option value="">All Specializations</option>
+                    @foreach (var s in (IEnumerable<ClinicManagement.Models.Entities.Specialization>)ViewBag.Specializations)
+                    { <option value="@s.SpecializationId" selected="@(ViewBag.SpecializationId != null && (int)ViewBag.SpecializationId == s.SpecializationId)">@s.Name</option> }
+                </select>
+            </div>
+            <div class="col-md-2"><button class="btn btn-primary w-100">Filter</button></div>
+        </form>
+    </div>
+</div>
+<div class="row g-3">
+    @foreach (var d in Model)
+    {
+        <div class="col-md-4 col-lg-3">
+            <div class="doctor-card">
+                <div class="avatar">@d.User.FullName.Substring(0,1)</div>
+                <h5>@d.User.FullName</h5>
+                <div class="specialty">@d.Specialization.Name</div>
+                <div class="fee">$@d.ConsultationFee</div>
+                <p style="font-size:13px;color:var(--text-muted)">@d.YearsOfExperience years experience</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="/Doctor/Details/@d.DoctorId" class="btn btn-sm btn-secondary"><i class="bi bi-eye"></i></a>
+                    <a href="/Doctor/Edit/@d.DoctorId" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
+                    <a href="/Doctor/Schedule/@d.DoctorId" class="btn btn-sm btn-warning"><i class="bi bi-clock"></i></a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@if (!Model.Any())
+{ <div class="empty-state mt-4"><i class="bi bi-person-x"></i><h5>No doctors found</h5></div> }

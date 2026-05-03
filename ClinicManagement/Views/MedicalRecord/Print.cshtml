@@ -1,0 +1,23 @@
+@model ClinicManagement.Models.Entities.MedicalRecord
+@{ Layout = null; }
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8" /><title>Medical Record #@Model.RecordId</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+<style>body{padding:30px;font-family:Arial,sans-serif}h1{font-size:20px}table{margin-top:20px}.header{border-bottom:2px solid #0077B6;padding-bottom:16px;margin-bottom:20px} @@media print{.no-print{display:none}}</style>
+</head><body>
+<div class="header"><h1>🏥 Hospital CMS — Medical Record</h1><p>Record #@Model.RecordId | Date: @Model.CreatedAt.ToString("MMM dd, yyyy")</p></div>
+<div class="row mb-3"><div class="col-6"><strong>Patient:</strong> @Model.Patient.User.FullName</div><div class="col-6"><strong>Doctor:</strong> @Model.Doctor.User.FullName</div></div>
+<h5>Diagnosis</h5><p>@Model.Diagnosis</p>
+@if (!string.IsNullOrEmpty(Model.TreatmentPlan)) { <h5>Treatment Plan</h5><p>@Model.TreatmentPlan</p> }
+@if (!string.IsNullOrEmpty(Model.LabResults)) { <h5>Lab Results</h5><p>@Model.LabResults</p> }
+@if (Model.FollowUpDate.HasValue) { <p><strong>Follow-Up:</strong> @Model.FollowUpDate.Value.ToString("MMM dd, yyyy")</p> }
+@if (Model.PrescriptionItems.Any())
+{
+    <h5>Prescription</h5>
+    <table class="table table-bordered"><thead><tr><th>Medicine</th><th>Dosage</th><th>Frequency</th><th>Duration</th><th>Instructions</th></tr></thead>
+    <tbody>@foreach (var p in Model.PrescriptionItems) { <tr><td>@p.MedicineName</td><td>@p.Dosage</td><td>@p.Frequency</td><td>@p.Duration</td><td>@p.Instructions</td></tr> }</tbody></table>
+}
+<div class="mt-5"><p>Doctor Signature: ____________________</p><p>Date: @DateTime.Now.ToString("MMM dd, yyyy")</p></div>
+<button class="btn btn-primary no-print" onclick="window.print()">Print</button>
+</body></html>

@@ -1,0 +1,38 @@
+@model ClinicManagement.Models.ViewModels.MedicalRecordCreateViewModel
+@{ ViewData["Title"] = "Create Medical Record"; ViewData["Breadcrumb"] = "New Record"; }
+<div class="page-header"><h1><i class="bi bi-clipboard2-plus me-2"></i>Medical Record</h1></div>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row"><div class="col-md-4"><strong>Patient:</strong> @Model.PatientName</div><div class="col-md-4"><strong>Doctor:</strong> @Model.DoctorName</div><div class="col-md-4"><strong>Date:</strong> @Model.AppointmentDate?.ToString("MMM dd, yyyy")</div></div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data" data-loading>
+            <input asp-for="AppointmentId" type="hidden" /><input asp-for="PatientId" type="hidden" /><input asp-for="DoctorId" type="hidden" />
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+            <div class="form-group"><label class="form-label">Diagnosis *</label><textarea asp-for="Diagnosis" class="form-control" rows="3" required></textarea></div>
+            <div class="form-group"><label class="form-label">Treatment Plan</label><textarea asp-for="TreatmentPlan" class="form-control" rows="2"></textarea></div>
+            <div class="form-group"><label class="form-label">Lab Results</label><textarea asp-for="LabResults" class="form-control" rows="2"></textarea></div>
+            <div class="row">
+                <div class="col-md-6 form-group"><label class="form-label">Follow-Up Date</label><input asp-for="FollowUpDate" type="date" class="form-control" /></div>
+                <div class="col-md-6 form-group"><label class="form-label">Attachment (PDF/Image)</label><input asp-for="Attachment" type="file" class="form-control" /></div>
+            </div>
+            <hr />
+            <h6 class="mb-3">Prescription Items <button type="button" class="btn btn-sm btn-secondary ms-2" onclick="addPrescriptionRow()"><i class="bi bi-plus"></i> Add</button></h6>
+            <div id="prescriptionItems">
+                <div class="prescription-row row g-2 mb-2">
+                    <div class="col-md-3"><input name="PrescriptionItems[0].MedicineName" class="form-control" placeholder="Medicine" /></div>
+                    <div class="col-md-2"><input name="PrescriptionItems[0].Dosage" class="form-control" placeholder="Dosage" /></div>
+                    <div class="col-md-2"><input name="PrescriptionItems[0].Frequency" class="form-control" placeholder="Frequency" /></div>
+                    <div class="col-md-2"><input name="PrescriptionItems[0].Duration" class="form-control" placeholder="Duration" /></div>
+                    <div class="col-md-2"><input name="PrescriptionItems[0].Instructions" class="form-control" placeholder="Instructions" /></div>
+                    <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.prescription-row').remove()"><i class="bi bi-trash"></i></button></div>
+                </div>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Save Record</button>
+            <a href="/Appointment/Details/@Model.AppointmentId" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    </div>
+</div>

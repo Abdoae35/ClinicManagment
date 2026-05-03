@@ -1,0 +1,22 @@
+@model ClinicManagement.Models.ViewModels.ClinicEditViewModel
+@{ ViewData["Title"] = "Edit Clinic"; ViewData["Breadcrumb"] = "Edit Clinic"; }
+<div class="page-header"><h1><i class="bi bi-pencil me-2"></i>Edit Clinic</h1></div>
+<div class="card"><div class="card-body">
+<form asp-action="Edit" method="post">
+    <input asp-for="ClinicId" type="hidden" />
+    <div class="row">
+        <div class="col-md-6 form-group"><label class="form-label">Name</label><input asp-for="Name" class="form-control" /></div>
+        <div class="col-md-6 form-group"><label class="form-label">Specialization</label>
+            <select asp-for="SpecializationId" class="form-select"><option value="">None</option>
+            @if(Model.Specializations!=null){foreach(var s in Model.Specializations){<option value="@s.SpecializationId">@s.Name</option>}}</select></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-group"><label class="form-label">Floor</label><input asp-for="Floor" class="form-control" /></div>
+        <div class="col-md-3 form-group"><label class="form-label">Room</label><input asp-for="RoomNumber" class="form-control" /></div>
+        <div class="col-md-3 form-group"><label class="form-label">Phone</label><input asp-for="Phone" class="form-control" /></div>
+        <div class="col-md-3 form-group"><label class="form-label">Status</label><div class="form-check mt-2"><input asp-for="IsActive" class="form-check-input" /><label class="form-check-label">Active</label></div></div>
+    </div>
+    <div class="form-group"><label class="form-label">Description</label><textarea asp-for="Description" class="form-control" rows="2"></textarea></div>
+    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Save</button>
+    <a href="/Clinic" class="btn btn-secondary ms-2">Cancel</a>
+</form></div></div>

@@ -1,0 +1,52 @@
+@model ClinicManagement.Models.Entities.Doctor
+@{ ViewData["Title"] = Model.User.FullName; ViewData["Breadcrumb"] = "Doctor Details"; }
+<div class="page-header">
+    <h1><i class="bi bi-person-badge me-2"></i>@Model.User.FullName</h1>
+    <div>
+        <a href="/Doctor/Edit/@Model.DoctorId" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
+        <a href="/Doctor/Schedule/@Model.DoctorId" class="btn btn-warning btn-sm"><i class="bi bi-clock"></i> Schedule</a>
+    </div>
+</div>
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card text-center p-4">
+            <div class="doctor-card" style="box-shadow:none;border:none">
+                <div class="avatar mx-auto">@Model.User.FullName.Substring(0,1)</div>
+                <h4 class="mt-3">@Model.User.FullName</h4>
+                <div class="specialty">@Model.Specialization.Name</div>
+                <div class="fee">$@Model.ConsultationFee</div>
+                <span class="badge-status @(Model.IsAvailable ? "badge-completed" : "badge-cancelled")">
+                    @(Model.IsAvailable ? "Available" : "Unavailable")
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header">Profile Information</div>
+            <div class="card-body">
+                <div class="row mb-2"><div class="col-4 text-muted">Email</div><div class="col-8">@Model.User.Email</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Phone</div><div class="col-8">@(Model.User.PhoneNumber ?? "N/A")</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">License</div><div class="col-8">@Model.LicenseNumber</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Experience</div><div class="col-8">@Model.YearsOfExperience years</div></div>
+                <div class="row mb-2"><div class="col-4 text-muted">Working Days</div><div class="col-8">@(Model.WorkingDays ?? "Not set")</div></div>
+                @if (!string.IsNullOrEmpty(Model.Bio))
+                { <div class="row mb-2"><div class="col-4 text-muted">Bio</div><div class="col-8">@Model.Bio</div></div> }
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Schedule</div>
+            <div class="card-body">
+                @if (Model.Schedules.Any())
+                {
+                    <table class="table"><thead><tr><th>Day</th><th>Start</th><th>End</th><th>Slot</th></tr></thead>
+                    <tbody>
+                    @foreach (var s in Model.Schedules.Where(s => s.IsActive).OrderBy(s => s.DayOfWeek))
+                    { <tr><td>@s.DayOfWeek</td><td>@s.StartTime.ToString(@"hh\:mm")</td><td>@s.EndTime.ToString(@"hh\:mm")</td><td>@s.SlotDurationMinutes min</td></tr> }
+                    </tbody></table>
+                }
+                else { <p class="text-muted">No schedule configured.</p> }
+            </div>
+        </div>
+    </div>
+</div>

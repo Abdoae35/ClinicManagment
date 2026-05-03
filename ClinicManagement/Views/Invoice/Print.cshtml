@@ -1,0 +1,24 @@
+@model ClinicManagement.Models.Entities.Invoice
+@{ Layout = null; }
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><title>Invoice #@Model.InvoiceId</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+<style>body{padding:40px;font-family:Arial,sans-serif}.header{border-bottom:3px solid #0077B6;padding-bottom:20px;margin-bottom:30px}@@media print{.no-print{display:none}}</style>
+</head><body>
+<div class="header">
+    <div class="row"><div class="col-6"><h2 style="color:#0077B6">🏥 Hospital CMS</h2><p>Hospital Clinic Management System</p></div>
+    <div class="col-6 text-end"><h3>INVOICE</h3><p>#@Model.InvoiceId<br/>Date: @Model.InvoiceDate.ToString("MMM dd, yyyy")</p></div></div>
+</div>
+<div class="row mb-4"><div class="col-6"><strong>Bill To:</strong><br/>@Model.Patient.User.FullName<br/>@(Model.Patient.User.Email)</div>
+<div class="col-6"><strong>Doctor:</strong><br/>@Model.Appointment.Doctor.User.FullName</div></div>
+<table class="table table-bordered"><thead><tr><th>Description</th><th>Amount</th></tr></thead>
+<tbody><tr><td>Medical Consultation</td><td>$@Model.TotalAmount</td></tr>
+<tr><td>Discount</td><td>-$@Model.Discount</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>$@(Model.TotalAmount - Model.Discount)</strong></td></tr>
+<tr><td>Paid</td><td>$@Model.PaidAmount</td></tr>
+<tr><td><strong>Balance</strong></td><td><strong>$@(Model.TotalAmount - Model.Discount - Model.PaidAmount)</strong></td></tr>
+</tbody></table>
+<p><strong>Payment Status:</strong> @Model.PaymentStatus</p>
+@if (Model.DueDate.HasValue) { <p><strong>Due Date:</strong> @Model.DueDate.Value.ToString("MMM dd, yyyy")</p> }
+<button class="btn btn-primary no-print mt-4" onclick="window.print()">Print Invoice</button>
+</body></html>

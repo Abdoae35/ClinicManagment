@@ -1,50 +1,149 @@
-﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@using ClinicManagement.Models.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ClinicManagement</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ClinicManagement.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - Hospital CMS</title>
+    <meta name="description" content="Hospital Clinic Management System" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ClinicManagement</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var currentUser = await UserManager.GetUserAsync(User);
+        var roles = currentUser != null ? await UserManager.GetRolesAsync(currentUser) : new List<string>();
+        var role = roles.FirstOrDefault() ?? "User";
+
+        <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-brand">
+                <div class="logo-icon"><i class="bi bi-hospital"></i></div>
+                <div>
+                    <h5>Hospital CMS</h5>
+                    <small>Management System</small>
+                </div>
+            </div>
+            <div class="sidebar-nav">
+                @await Html.PartialAsync("_Sidebar", role)
+            </div>
+            <div class="sidebar-user">
+                @if (currentUser?.ProfilePicture != null)
+                {
+                    <img src="@currentUser.ProfilePicture" alt="Avatar" />
+                }
+                else
+                {
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0077B6,#00B4D8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;">
+                        @(currentUser?.FullName?.Substring(0, 1) ?? "U")
+                    </div>
+                }
+                <div class="user-info">
+                    <strong>@currentUser?.FullName</strong>
+                    <small>@role</small>
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - ClinicManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button id="sidebarToggle" class="sidebar-toggle"><i class="bi bi-list"></i></button>
+                    <nav class="breadcrumb-nav">
+                        <ol>
+                            <li><a href="/Dashboard">Home</a></li>
+                            @if (ViewData["Breadcrumb"] != null)
+                            {
+                                <li>@ViewData["Breadcrumb"]</li>
+                            }
+                        </ol>
+                    </nav>
+                </div>
+                <div class="navbar-right">
+                    <div class="global-search">
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Search..." />
+                    </div>
+                    <div style="position:relative">
+                        <button id="notificationBell" class="notification-bell">
+                            <i class="bi bi-bell"></i>
+                            <span id="notificationBadge" class="notification-badge" style="display:none">0</span>
+                        </button>
+                        <div id="notificationDropdown" class="notification-dropdown">
+                            <div class="n-header">
+                                <span>Notifications</span>
+                                <a href="/Notification/MarkAllRead" style="font-size:12px;">Mark all read</a>
+                            </div>
+                            <div id="notificationList"></div>
+                            <div class="n-footer"><a href="/Notification">View All</a></div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="dropdown">
+                            <button class="user-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
+                                @if (currentUser?.ProfilePicture != null)
+                                {
+                                    <img src="@currentUser.ProfilePicture" alt="" />
+                                }
+                                else
+                                {
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0077B6,#00B4D8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">@(currentUser?.FullName?.Substring(0, 1) ?? "U")</div>
+                                }
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/Account/Profile"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                        <button class="dropdown-item" type="submit"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="page-content">
+                <div id="toastContainer" class="toast-container">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="toast toast-success"><i class="bi bi-check-circle-fill"></i> @TempData["Success"]</div>
+                    }
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="toast toast-error"><i class="bi bi-exclamation-triangle-fill"></i> @TempData["Error"]</div>
+                    }
+                </div>
+                @RenderBody()
+            </main>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    }
+    else
+    {
+        @RenderBody()
+    }
+
+    <div id="loadingOverlay" class="loading-overlay"><div class="spinner"></div></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+    <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

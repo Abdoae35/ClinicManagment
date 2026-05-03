@@ -1,0 +1,37 @@
+@model ClinicManagement.Models.ViewModels.DoctorEditViewModel
+@{ ViewData["Title"] = "Edit Doctor"; ViewData["Breadcrumb"] = "Edit Doctor"; }
+<div class="page-header"><h1><i class="bi bi-pencil me-2"></i>Edit Doctor</h1></div>
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Edit" method="post" data-loading>
+            <input asp-for="DoctorId" type="hidden" /><input asp-for="UserId" type="hidden" />
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+            <div class="row">
+                <div class="col-md-4 form-group"><label class="form-label">Full Name</label><input asp-for="FullName" class="form-control" /></div>
+                <div class="col-md-4 form-group"><label class="form-label">Email</label><input asp-for="Email" class="form-control" readonly /></div>
+                <div class="col-md-4 form-group"><label class="form-label">Phone</label><input asp-for="PhoneNumber" class="form-control" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label class="form-label">Specialization</label>
+                    <select asp-for="SpecializationId" class="form-select">
+                        @foreach (var s in Model.Specializations!) { <option value="@s.SpecializationId">@s.Name</option> }
+                    </select>
+                </div>
+                <div class="col-md-4 form-group"><label class="form-label">License Number</label><input asp-for="LicenseNumber" class="form-control" /></div>
+                <div class="col-md-4 form-group"><label class="form-label">Experience</label><input asp-for="YearsOfExperience" type="number" class="form-control" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group"><label class="form-label">Fee</label><input asp-for="ConsultationFee" type="number" step="0.01" class="form-control" /></div>
+                <div class="col-md-4 form-group"><label class="form-label">Working Days</label><input asp-for="WorkingDays" class="form-control" /></div>
+                <div class="col-md-4 form-group">
+                    <label class="form-label">Status</label>
+                    <div class="form-check mt-2"><input asp-for="IsAvailable" class="form-check-input" /><label class="form-check-label">Available</label></div>
+                </div>
+            </div>
+            <div class="form-group"><label class="form-label">Bio</label><textarea asp-for="Bio" class="form-control" rows="3"></textarea></div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Save Changes</button>
+            <a href="/Doctor" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    </div>
+</div>

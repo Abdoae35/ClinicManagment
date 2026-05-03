@@ -1,0 +1,69 @@
+@model string
+@{
+    var role = Model;
+}
+
+@if (role == "Admin" || role == "Receptionist")
+{
+    <p class="nav-section-title">Main</p>
+    <a href="/Dashboard" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+        <i class="bi bi-grid-1x2"></i> Dashboard
+    </a>
+    <a href="/Appointment" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Appointment" ? "active" : "")">
+        <i class="bi bi-calendar-check"></i> Appointments
+    </a>
+
+    <p class="nav-section-title">Management</p>
+    <a href="/Doctor" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Doctor" ? "active" : "")">
+        <i class="bi bi-person-badge"></i> Doctors
+    </a>
+    <a href="/Patient" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Patient" ? "active" : "")">
+        <i class="bi bi-people"></i> Patients
+    </a>
+    <a href="/Clinic" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Clinic" ? "active" : "")">
+        <i class="bi bi-building"></i> Clinics
+    </a>
+
+    <p class="nav-section-title">Financial</p>
+    <a href="/Invoice" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Invoice" ? "active" : "")">
+        <i class="bi bi-receipt"></i> Invoices
+    </a>
+}
+
+@if (role == "Admin")
+{
+    <p class="nav-section-title">Analytics</p>
+    <a href="/Report" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Report" ? "active" : "")">
+        <i class="bi bi-bar-chart-line"></i> Reports
+    </a>
+}
+
+@if (role == "Doctor")
+{
+    <p class="nav-section-title">Main</p>
+    <a href="/Dashboard/Doctor" class="sidebar-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Doctor" ? "active" : "")">
+        <i class="bi bi-grid-1x2"></i> My Dashboard
+    </a>
+    <a href="/Appointment/List" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Appointment" ? "active" : "")">
+        <i class="bi bi-calendar-check"></i> Appointments
+    </a>
+    <a href="/Patient" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Patient" ? "active" : "")">
+        <i class="bi bi-people"></i> Patients
+    </a>
+}
+
+@if (role == "Patient")
+{
+    <p class="nav-section-title">My Portal</p>
+    <a href="/Patient/MyProfile" class="sidebar-link @(ViewContext.RouteData.Values["action"]?.ToString() == "MyProfile" ? "active" : "")">
+        <i class="bi bi-person"></i> My Profile
+    </a>
+}
+
+<p class="nav-section-title">Account</p>
+<a href="/Notification" class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Notification" ? "active" : "")">
+    <i class="bi bi-bell"></i> Notifications
+</a>
+<a href="/Account/Profile" class="sidebar-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Profile" && ViewContext.RouteData.Values["controller"]?.ToString() == "Account" ? "active" : "")">
+    <i class="bi bi-gear"></i> Settings
+</a>
