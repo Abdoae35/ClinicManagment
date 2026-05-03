@@ -5,7 +5,7 @@ namespace ClinicManagement.Models.ViewModels
 {
     public class DoctorCreateViewModel
     {
-        [Required] public string UserId { get; set; } = string.Empty;
+        public string? UserId { get; set; }
         [Required] public int SpecializationId { get; set; }
         [Required][StringLength(50)] public string LicenseNumber { get; set; } = string.Empty;
         [Range(0, 60)] public int YearsOfExperience { get; set; }
