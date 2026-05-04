@@ -11,6 +11,17 @@
                 <div class="col-md-4 form-group"><label class="form-label">Email *</label><input asp-for="Email" class="form-control" /><span asp-validation-for="Email" class="text-danger"></span></div>
                 <div class="col-md-4 form-group"><label class="form-label">Phone</label><input asp-for="PhoneNumber" class="form-control" /></div>
             </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label class="form-label">Password *</label>
+                    <div class="input-group">
+                        <input asp-for="Password" class="form-control" id="doctorPassword" />
+                        <button type="button" class="btn btn-outline-secondary" onclick="generatePassword()" title="Generate random password"><i class="bi bi-key"></i></button>
+                    </div>
+                    <small class="text-muted">Share this password with the doctor so they can login.</small>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
             <hr />
             <h6 class="mb-3">Professional Information</h6>
             <div class="row">
@@ -36,3 +47,23 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+<script>
+function generatePassword() {
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const digits = '0123456789';
+    const special = '@#$!%&';
+    let pwd = '';
+    pwd += upper[Math.floor(Math.random() * upper.length)];
+    pwd += lower[Math.floor(Math.random() * lower.length)];
+    pwd += digits[Math.floor(Math.random() * digits.length)];
+    pwd += special[Math.floor(Math.random() * special.length)];
+    const all = upper + lower + digits + special;
+    for (let i = 0; i < 8; i++) pwd += all[Math.floor(Math.random() * all.length)];
+    pwd = pwd.split('').sort(() => Math.random() - 0.5).join('');
+    document.getElementById('doctorPassword').value = pwd;
+}
+</script>
+}

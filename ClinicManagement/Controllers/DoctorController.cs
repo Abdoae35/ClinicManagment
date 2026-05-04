@@ -65,7 +65,7 @@ namespace ClinicManagement.Controllers
                 UserName = model.Email, Email = model.Email, FullName = model.FullName,
                 PhoneNumber = model.PhoneNumber, EmailConfirmed = true, IsActive = true, CreatedAt = DateTime.UtcNow
             };
-            var result = await _userManager.CreateAsync(user, model.Password ?? "Doctor@123456");
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
                 foreach (var e in result.Errors) ModelState.AddModelError("", e.Description);
@@ -82,7 +82,7 @@ namespace ClinicManagement.Controllers
             };
             await _doctorService.CreateDoctorAsync(doctor);
             await _audit.LogAsync("Create", "Doctor", doctor.DoctorId.ToString(), $"Created doctor {model.FullName}");
-            TempData["Success"] = "Doctor created successfully.";
+            TempData["Success"] = $"Doctor created successfully. Login credentials — Email: {model.Email}, Password: {model.Password}";
             return RedirectToAction("Index");
         }
 

@@ -10,6 +10,7 @@ namespace ClinicManagement.Services.Interfaces
         Task<Patient?> GetPatientByUserIdAsync(string userId);
         Task CreatePatientAsync(Patient patient);
         Task UpdatePatientAsync(Patient patient);
+        Task DeletePatientAsync(int id);
         Task<IEnumerable<Patient>> SearchPatientsAsync(string searchTerm);
     }
 }

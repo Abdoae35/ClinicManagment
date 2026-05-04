@@ -28,15 +28,26 @@ namespace ClinicManagement.Services.Implementations
 
         public async Task UpdatePatientAsync(Patient patient)
         {
-            _context.Patients.Update(patient);
+            _context.Entry(patient).State = EntityState.Modified;
+            _context.Entry(patient.User).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task DeletePatientAsync(int id)
+        {
+            var patient = await _context.Patients.Include(p => p.User).FirstOrDefaultAsync(p => p.PatientId == id);
+            if (patient != null)
+            {
+                patient.User.IsActive = false;
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Patient>> SearchPatientsAsync(string searchTerm)
         {
             var term = searchTerm.ToLower();
             return await _context.Patients.Include(p => p.User)
-                .Where(p => p.User.FullName.ToLower().Contains(term) || p.User.PhoneNumber!.Contains(term) || (p.InsuranceNumber != null && p.InsuranceNumber.Contains(term)))
+                .Where(p => p.User.IsActive && (p.User.FullName.ToLower().Contains(term) || p.User.PhoneNumber!.Contains(term) || (p.InsuranceNumber != null && p.InsuranceNumber.Contains(term))))
                 .ToListAsync();
         }
     }

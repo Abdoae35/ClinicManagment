@@ -118,7 +118,18 @@ namespace ClinicManagement.Controllers
             await _patientService.UpdatePatientAsync(patient);
             await _audit.LogAsync("Update", "Patient", model.PatientId.ToString());
             TempData["Success"] = "Patient updated successfully.";
-            return RedirectToAction("Details", new { id = model.PatientId });
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "Admin,Receptionist")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _patientService.DeletePatientAsync(id);
+            await _audit.LogAsync("SoftDelete", "Patient", id.ToString());
+            TempData["Success"] = "Patient deleted successfully.";
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Patient")]
