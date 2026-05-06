@@ -3,7 +3,8 @@
 <div class="page-header">
     <h1><i class="bi bi-calendar-check me-2"></i>Appointment #@Model.AppointmentId</h1>
     <div>
-        @if (Model.Status != ClinicManagement.Models.Enums.AppointmentStatus.Completed && Model.Status != ClinicManagement.Models.Enums.AppointmentStatus.Cancelled)
+        @if (Model.Status != ClinicManagement.Models.Enums.AppointmentStatus.Completed && Model.Status != ClinicManagement.Models.Enums.AppointmentStatus.Cancelled
+            && (User.IsInRole("Admin") || User.IsInRole("Receptionist") || User.IsInRole("Doctor")))
         {
             <a href="/Appointment/Edit/@Model.AppointmentId" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
         }

@@ -119,7 +119,7 @@ namespace ClinicManagement.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Admin,Receptionist")]
+        [Authorize(Roles = "Admin,Receptionist,Doctor")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -135,7 +135,7 @@ namespace ClinicManagement.Controllers
             return View(vm);
         }
 
-        [Authorize(Roles = "Admin,Receptionist")]
+        [Authorize(Roles = "Admin,Receptionist,Doctor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(AppointmentEditViewModel model)
