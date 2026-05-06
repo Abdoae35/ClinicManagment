@@ -23,7 +23,14 @@ namespace ClinicManagement.Controllers
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
-            if (User.Identity?.IsAuthenticated == true) return RedirectToAction("Index", "Dashboard");
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                if (User.IsInRole("Doctor"))
+                    return RedirectToAction("Doctor", "Dashboard");
+                if (User.IsInRole("Patient"))
+                    return RedirectToAction("MyProfile", "Patient");
+                return RedirectToAction("Index", "Dashboard");
+            }
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
