@@ -53,9 +53,9 @@ namespace ClinicManagement.Controllers
 
             var vm = new DashboardViewModel
             {
-                TotalPatients = await _context.Patients.CountAsync(),
+                TotalPatients = await _context.Patients.CountAsync(p => p.User.IsActive),
                 TodayAppointments = await _appointmentService.GetTodayAppointmentCountAsync(),
-                AvailableDoctors = await _context.Doctors.CountAsync(d => d.IsAvailable),
+                AvailableDoctors = await _context.Doctors.CountAsync(d => d.IsAvailable && d.User.IsActive),
                 PendingInvoices = await _invoiceService.GetPendingInvoiceCountAsync(),
                 TotalRevenue = await _invoiceService.GetTotalRevenueAsync(),
                 TodayAppointmentsList = await _appointmentService.GetTodayAppointmentsAsync(),

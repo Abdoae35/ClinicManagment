@@ -26,16 +26,16 @@ namespace ClinicManagement.Controllers
 
         [Authorize(Roles = "Admin,Doctor")]
         [HttpGet]
-        public async Task<IActionResult> Create(int appointmentId)
+        public async Task<IActionResult> Create(int id)
         {
-            var appt = await _appointmentService.GetAppointmentByIdAsync(appointmentId);
+            var appt = await _appointmentService.GetAppointmentByIdAsync(id);
             if (appt == null) return NotFound();
-            if (await _recordService.HasRecordForAppointmentAsync(appointmentId))
-            { TempData["Error"] = "A medical record already exists."; return RedirectToAction("Details", "Appointment", new { id = appointmentId }); }
+            if (await _recordService.HasRecordForAppointmentAsync(id))
+            { TempData["Error"] = "A medical record already exists."; return RedirectToAction("Details", "Appointment", new { id = id }); }
 
             var vm = new MedicalRecordCreateViewModel
             {
-                AppointmentId = appointmentId, PatientId = appt.PatientId, DoctorId = appt.DoctorId,
+                AppointmentId = id, PatientId = appt.PatientId, DoctorId = appt.DoctorId,
                 PatientName = appt.Patient.User.FullName, DoctorName = appt.Doctor.User.FullName,
                 AppointmentDate = appt.AppointmentDate
             };

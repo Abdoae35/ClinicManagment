@@ -23,7 +23,9 @@ namespace ClinicManagement.Services.Implementations
             => await _context.Invoices.Include(i => i.Appointment).Where(i => i.PatientId == patientId).OrderByDescending(i => i.InvoiceDate).ToListAsync();
 
         public async Task<IEnumerable<Invoice>> GetInvoicesByStatusAsync(PaymentStatus status)
-            => await _context.Invoices.Include(i => i.Patient).ThenInclude(p => p.User).Where(i => i.PaymentStatus == status).ToListAsync();
+            => await _context.Invoices.Include(i => i.Appointment).ThenInclude(a => a.Doctor).ThenInclude(d => d.User)
+                .Include(i => i.Patient).ThenInclude(p => p.User)
+                .Where(i => i.PaymentStatus == status).OrderByDescending(i => i.InvoiceDate).ToListAsync();
 
         public async Task CreateInvoiceAsync(int appointmentId)
         {

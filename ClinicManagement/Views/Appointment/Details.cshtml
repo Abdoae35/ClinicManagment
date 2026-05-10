@@ -47,11 +47,11 @@
                 }
                 @if (Model.Status == ClinicManagement.Models.Enums.AppointmentStatus.Completed && Model.MedicalRecord == null)
                 {
-                    <a href="/MedicalRecord/Create/@Model.AppointmentId" class="btn btn-primary w-100"><i class="bi bi-clipboard2-plus"></i> Add Record</a>
+                    <a href="/MedicalRecord/Create/@Model.AppointmentId" class="btn btn-primary w-100"><i class="bi bi-clipboard2-plus"></i> Add Medical Record</a>
                 }
                 @if (Model.MedicalRecord != null)
                 {
-                    <a href="/MedicalRecord/Details/@Model.MedicalRecord.RecordId" class="btn btn-secondary w-100"><i class="bi bi-clipboard2-check"></i> View Record</a>
+                    <a href="/MedicalRecord/Details/@Model.MedicalRecord.RecordId" class="btn btn-secondary w-100"><i class="bi bi-clipboard2-check"></i> View Medical Record</a>
                 }
                 @if (Model.Invoice != null)
                 {
