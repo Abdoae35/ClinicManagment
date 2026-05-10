@@ -26,7 +26,8 @@ namespace ClinicManagement.Services.Implementations
 
         public async Task<Appointment?> GetAppointmentByIdAsync(int id)
             => await _context.Appointments.Include(a => a.Patient).ThenInclude(p => p.User)
-                .Include(a => a.Doctor).ThenInclude(d => d.User).ThenInclude(u => u.Doctor).ThenInclude(d => d!.Specialization)
+                .Include(a => a.Doctor).ThenInclude(d => d.User)
+                .Include(a => a.Doctor).ThenInclude(d => d.Specialization)
                 .Include(a => a.Clinic).Include(a => a.MedicalRecord).Include(a => a.Invoice)
                 .FirstOrDefaultAsync(a => a.AppointmentId == id);
 
