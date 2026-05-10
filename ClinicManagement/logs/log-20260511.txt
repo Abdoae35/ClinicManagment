@@ -1,0 +1,739 @@
+2026-05-11 00:08:32.212 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-05-11 00:08:32.270 +03:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-05-11 00:08:32.291 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-05-11 00:08:32.368 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-05-11 00:08:32.383 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-05-11 00:08:32.385 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-05-11 00:08:32.393 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-05-11 00:08:32.406 +03:00 [INF] No migrations were applied. The database is already up to date.
+2026-05-11 00:08:32.416 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-05-11 00:08:32.437 +03:00 [INF] User profile is available. Using '/Users/macbookpro/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-05-11 00:08:32.872 +03:00 [INF] Executed DbCommand (50ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-11 00:08:32.949 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-11 00:08:32.951 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-11 00:08:32.953 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-11 00:08:32.969 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.048 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.069 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Specializations] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-05-11 00:08:33.078 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name]
+FROM [Specializations] AS [s]
+2026-05-11 00:08:33.105 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clinics] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-05-11 00:08:33.108 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.110 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.113 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.115 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.118 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.120 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.122 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.124 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.126 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.128 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.130 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.133 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.135 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.137 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.140 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.142 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.144 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.146 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.148 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.150 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.152 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.153 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.155 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.157 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.158 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-05-11 00:08:33.225 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Appointments] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-05-11 00:08:33.497 +03:00 [INF] Now listening on: http://localhost:5207
+2026-05-11 00:08:33.499 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-11 00:08:33.499 +03:00 [INF] Hosting environment: Development
+2026-05-11 00:08:33.499 +03:00 [INF] Content root path: /Users/macbookpro/Desktop/ProjectBasma/ClinicManagment/ClinicManagement
+2026-05-11 00:08:33.626 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/ - null null
+2026-05-11 00:08:33.628 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-11 00:08:33.751 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:33.800 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-05-11 00:08:33.828 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:33.832 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-11 00:08:33.840 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-05-11 00:08:33.850 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.HomeController.Index (ClinicManagement)'
+2026-05-11 00:08:33.857 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ClinicManagement.Controllers.HomeController (ClinicManagement).
+2026-05-11 00:08:33.869 +03:00 [INF] Executing RedirectResult, redirecting to /Dashboard.
+2026-05-11 00:08:33.874 +03:00 [INF] Executed action ClinicManagement.Controllers.HomeController.Index (ClinicManagement) in 12.3643ms
+2026-05-11 00:08:33.879 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.HomeController.Index (ClinicManagement)'
+2026-05-11 00:08:33.892 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/ - 302 0 null 268.9148ms
+2026-05-11 00:08:33.894 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Dashboard - null null
+2026-05-11 00:08:33.906 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.DashboardController.Index (ClinicManagement)'
+2026-05-11 00:08:33.912 +03:00 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller ClinicManagement.Controllers.DashboardController (ClinicManagement).
+2026-05-11 00:08:34.026 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.041 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.045 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.048 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.051 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.054 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.056 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:34.116 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE [a].[Status]
+    WHEN 0 THEN N'Scheduled'
+    WHEN 1 THEN N'Confirmed'
+    WHEN 2 THEN N'Completed'
+    WHEN 3 THEN N'Cancelled'
+    WHEN 4 THEN N'NoShow'
+    ELSE CAST([a].[Status] AS nvarchar(max))
+END AS [Status], COUNT(*) AS [Count]
+FROM [Appointments] AS [a]
+GROUP BY [a].[Status]
+2026-05-11 00:08:34.143 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Name], COUNT(*) AS [Count]
+FROM [Patients] AS [p]
+INNER JOIN [Appointments] AS [a] ON [p].[PatientId] = [a].[PatientId]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+GROUP BY [s].[Name]
+2026-05-11 00:08:34.151 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Patients] AS [p]
+2026-05-11 00:08:34.159 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = CONVERT(date, GETDATE())
+2026-05-11 00:08:34.166 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[IsAvailable] = CAST(1 AS bit)
+2026-05-11 00:08:34.176 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Invoices] AS [i]
+WHERE [i].[PaymentStatus] = 0
+2026-05-11 00:08:34.198 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([i].[PaidAmount]), 0.0)
+FROM [Invoices] AS [i]
+WHERE [i].[PaymentStatus] = 1
+2026-05-11 00:08:34.263 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+WHERE CONVERT(date, [a].[AppointmentDate]) = CONVERT(date, GETDATE())
+ORDER BY [a].[AppointmentTime]
+2026-05-11 00:08:34.287 +03:00 [INF] Executing ViewResult, running view Index.
+2026-05-11 00:08:34.332 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:34.340 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:34.389 +03:00 [INF] Executed ViewResult - view Index executed in 116.6122ms.
+2026-05-11 00:08:34.393 +03:00 [INF] Executed action ClinicManagement.Controllers.DashboardController.Index (ClinicManagement) in 481.2836ms
+2026-05-11 00:08:34.394 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.DashboardController.Index (ClinicManagement)'
+2026-05-11 00:08:34.397 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Dashboard - 200 null text/html; charset=utf-8 502.6876ms
+2026-05-11 00:08:36.725 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:36.751 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:36.756 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:36.763 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:36.773 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:36.786 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:36.789 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:36.816 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 59.9605ms
+2026-05-11 00:08:36.816 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:36.816 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 91.7213ms
+2026-05-11 00:08:41.278 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment - null null
+2026-05-11 00:08:41.282 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.Index (ClinicManagement)'
+2026-05-11 00:08:41.288 +03:00 [INF] Route matched with {action = "Index", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:41.341 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+LEFT JOIN [Clinics] AS [c] ON [a].[ClinicId] = [c].[ClinicId]
+ORDER BY [a].[AppointmentDate] DESC, [a].[AppointmentTime]
+2026-05-11 00:08:41.542 +03:00 [INF] Executing ViewResult, running view Index.
+2026-05-11 00:08:41.553 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:41.555 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:41.586 +03:00 [INF] Executed ViewResult - view Index executed in 47.2947ms.
+2026-05-11 00:08:41.586 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.Index (ClinicManagement) in 298.7213ms
+2026-05-11 00:08:41.587 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.Index (ClinicManagement)'
+2026-05-11 00:08:41.587 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment - 200 null text/html; charset=utf-8 308.6735ms
+2026-05-11 00:08:41.842 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:41.845 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:41.845 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:41.849 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:41.852 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:41.855 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:41.856 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:41.856 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 11.2105ms
+2026-05-11 00:08:41.857 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:41.857 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 14.8856ms
+2026-05-11 00:08:42.830 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment/List - null null
+2026-05-11 00:08:42.832 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.List (ClinicManagement)'
+2026-05-11 00:08:42.845 +03:00 [INF] Route matched with {action = "List", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32]) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:42.898 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__start_Date_0='?' (DbType = DateTime2), @__end_Date_1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+WHERE CONVERT(date, [a].[AppointmentDate]) >= @__start_Date_0 AND CONVERT(date, [a].[AppointmentDate]) <= @__end_Date_1
+ORDER BY [a].[AppointmentDate] DESC
+2026-05-11 00:08:42.928 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name]
+FROM [Doctors] AS [d]
+INNER JOIN [AspNetUsers] AS [a] ON [d].[UserId] = [a].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+WHERE [d].[IsAvailable] = CAST(1 AS bit)
+2026-05-11 00:08:42.942 +03:00 [INF] Executing ViewResult, running view List.
+2026-05-11 00:08:42.949 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:42.951 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:42.954 +03:00 [INF] Executed ViewResult - view List executed in 12.6647ms.
+2026-05-11 00:08:42.954 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.List (ClinicManagement) in 108.2394ms
+2026-05-11 00:08:42.954 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.List (ClinicManagement)'
+2026-05-11 00:08:42.954 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment/List - 200 null text/html; charset=utf-8 123.7297ms
+2026-05-11 00:08:43.369 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:43.370 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:43.370 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:43.373 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:43.376 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:43.379 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:43.379 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:43.379 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 9.2733ms
+2026-05-11 00:08:43.380 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:43.380 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 10.8633ms
+2026-05-11 00:08:44.145 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment/Details/43 - null null
+2026-05-11 00:08:44.148 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement)'
+2026-05-11 00:08:44.153 +03:00 [INF] Route matched with {action = "Details", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:44.210 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name], [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId], [m].[RecordId], [m].[AppointmentId], [m].[AttachmentPath], [m].[CreatedAt], [m].[Diagnosis], [m].[DoctorId], [m].[FollowUpDate], [m].[LabResults], [m].[PatientId], [m].[Prescription], [m].[TreatmentPlan], [i].[InvoiceId], [i].[AppointmentId], [i].[Discount], [i].[DueDate], [i].[InvoiceDate], [i].[PaidAmount], [i].[PatientId], [i].[PaymentMethod], [i].[PaymentStatus], [i].[TotalAmount]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+LEFT JOIN [Clinics] AS [c] ON [a].[ClinicId] = [c].[ClinicId]
+LEFT JOIN [MedicalRecords] AS [m] ON [a].[AppointmentId] = [m].[AppointmentId]
+LEFT JOIN [Invoices] AS [i] ON [a].[AppointmentId] = [i].[AppointmentId]
+WHERE [a].[AppointmentId] = @__id_0
+2026-05-11 00:08:44.248 +03:00 [INF] Executing ViewResult, running view Details.
+2026-05-11 00:08:44.257 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:44.260 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:44.262 +03:00 [INF] Executed ViewResult - view Details executed in 15.1213ms.
+2026-05-11 00:08:44.262 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement) in 109.468ms
+2026-05-11 00:08:44.262 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement)'
+2026-05-11 00:08:44.263 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment/Details/43 - 200 null text/html; charset=utf-8 117.8902ms
+2026-05-11 00:08:44.528 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:44.529 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:44.529 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:44.533 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:44.537 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:44.540 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:44.540 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:44.541 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 11.5242ms
+2026-05-11 00:08:44.541 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:44.541 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 12.9373ms
+2026-05-11 00:08:47.779 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment/List - null null
+2026-05-11 00:08:47.780 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.List (ClinicManagement)'
+2026-05-11 00:08:47.780 +03:00 [INF] Route matched with {action = "List", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32]) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:47.785 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__start_Date_0='?' (DbType = DateTime2), @__end_Date_1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+WHERE CONVERT(date, [a].[AppointmentDate]) >= @__start_Date_0 AND CONVERT(date, [a].[AppointmentDate]) <= @__end_Date_1
+ORDER BY [a].[AppointmentDate] DESC
+2026-05-11 00:08:47.795 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name]
+FROM [Doctors] AS [d]
+INNER JOIN [AspNetUsers] AS [a] ON [d].[UserId] = [a].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+WHERE [d].[IsAvailable] = CAST(1 AS bit)
+2026-05-11 00:08:47.796 +03:00 [INF] Executing ViewResult, running view List.
+2026-05-11 00:08:47.800 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:47.802 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:47.803 +03:00 [INF] Executed ViewResult - view List executed in 7.2186ms.
+2026-05-11 00:08:47.804 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.List (ClinicManagement) in 23.0224ms
+2026-05-11 00:08:47.804 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.List (ClinicManagement)'
+2026-05-11 00:08:47.804 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment/List - 200 null text/html; charset=utf-8 24.9404ms
+2026-05-11 00:08:49.079 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment/Edit/43 - null null
+2026-05-11 00:08:49.080 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement)'
+2026-05-11 00:08:49.084 +03:00 [INF] Route matched with {action = "Edit", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Int32) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:49.092 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name], [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId], [m].[RecordId], [m].[AppointmentId], [m].[AttachmentPath], [m].[CreatedAt], [m].[Diagnosis], [m].[DoctorId], [m].[FollowUpDate], [m].[LabResults], [m].[PatientId], [m].[Prescription], [m].[TreatmentPlan], [i].[InvoiceId], [i].[AppointmentId], [i].[Discount], [i].[DueDate], [i].[InvoiceDate], [i].[PaidAmount], [i].[PatientId], [i].[PaymentMethod], [i].[PaymentStatus], [i].[TotalAmount]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+LEFT JOIN [Clinics] AS [c] ON [a].[ClinicId] = [c].[ClinicId]
+LEFT JOIN [MedicalRecords] AS [m] ON [a].[AppointmentId] = [m].[AppointmentId]
+LEFT JOIN [Invoices] AS [i] ON [a].[AppointmentId] = [i].[AppointmentId]
+WHERE [a].[AppointmentId] = @__id_0
+2026-05-11 00:08:49.111 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name]
+FROM [Clinics] AS [c]
+LEFT JOIN [Specializations] AS [s] ON [c].[SpecializationId] = [s].[SpecializationId]
+2026-05-11 00:08:49.116 +03:00 [INF] Executing ViewResult, running view Edit.
+2026-05-11 00:08:49.190 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:49.192 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:49.194 +03:00 [INF] Executed ViewResult - view Edit executed in 78.8913ms.
+2026-05-11 00:08:49.194 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement) in 109.6229ms
+2026-05-11 00:08:49.194 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement)'
+2026-05-11 00:08:49.194 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment/Edit/43 - 200 null text/html; charset=utf-8 115.6779ms
+2026-05-11 00:08:49.511 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:49.512 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:49.512 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:49.516 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:49.518 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:49.521 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:49.521 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:49.522 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 8.9872ms
+2026-05-11 00:08:49.522 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:49.522 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 10.7027ms
+2026-05-11 00:08:50.783 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5207/Appointment/Edit/43 - application/x-www-form-urlencoded 496
+2026-05-11 00:08:50.785 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement)'
+2026-05-11 00:08:50.810 +03:00 [INF] Route matched with {action = "Edit", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(ClinicManagement.Models.ViewModels.AppointmentEditViewModel) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:50.833 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name], [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId], [m].[RecordId], [m].[AppointmentId], [m].[AttachmentPath], [m].[CreatedAt], [m].[Diagnosis], [m].[DoctorId], [m].[FollowUpDate], [m].[LabResults], [m].[PatientId], [m].[Prescription], [m].[TreatmentPlan], [i].[InvoiceId], [i].[AppointmentId], [i].[Discount], [i].[DueDate], [i].[InvoiceDate], [i].[PaidAmount], [i].[PatientId], [i].[PaymentMethod], [i].[PaymentStatus], [i].[TotalAmount]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+LEFT JOIN [Clinics] AS [c] ON [a].[ClinicId] = [c].[ClinicId]
+LEFT JOIN [MedicalRecords] AS [m] ON [a].[AppointmentId] = [m].[AppointmentId]
+LEFT JOIN [Invoices] AS [i] ON [a].[AppointmentId] = [i].[AppointmentId]
+WHERE [a].[AppointmentId] = @__id_0
+2026-05-11 00:08:50.969 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Time), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 1000), @p7='?' (DbType = Int32), @p8='?' (Size = 500), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Appointments] SET [AppointmentDate] = @p0, [AppointmentTime] = @p1, [ClinicId] = @p2, [CreatedAt] = @p3, [DoctorId] = @p4, [DurationMinutes] = @p5, [Notes] = @p6, [PatientId] = @p7, [ReasonForVisit] = @p8, [Status] = @p9, [UpdatedAt] = @p10
+OUTPUT 1
+WHERE [AppointmentId] = @p11;
+2026-05-11 00:08:50.982 +03:00 [INF] Executing RedirectResult, redirecting to /Appointment/Details/43.
+2026-05-11 00:08:50.983 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement) in 172.7803ms
+2026-05-11 00:08:50.983 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.Edit (ClinicManagement)'
+2026-05-11 00:08:50.983 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5207/Appointment/Edit/43 - 302 0 null 200.0097ms
+2026-05-11 00:08:50.987 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Appointment/Details/43 - null null
+2026-05-11 00:08:50.987 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement)'
+2026-05-11 00:08:50.987 +03:00 [INF] Route matched with {action = "Details", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller ClinicManagement.Controllers.AppointmentController (ClinicManagement).
+2026-05-11 00:08:50.990 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [s].[SpecializationId], [s].[Description], [s].[IconClass], [s].[Name], [c].[ClinicId], [c].[Description], [c].[Floor], [c].[IsActive], [c].[Name], [c].[Phone], [c].[RoomNumber], [c].[SpecializationId], [m].[RecordId], [m].[AppointmentId], [m].[AttachmentPath], [m].[CreatedAt], [m].[Diagnosis], [m].[DoctorId], [m].[FollowUpDate], [m].[LabResults], [m].[PatientId], [m].[Prescription], [m].[TreatmentPlan], [i].[InvoiceId], [i].[AppointmentId], [i].[Discount], [i].[DueDate], [i].[InvoiceDate], [i].[PaidAmount], [i].[PatientId], [i].[PaymentMethod], [i].[PaymentStatus], [i].[TotalAmount]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+LEFT JOIN [Clinics] AS [c] ON [a].[ClinicId] = [c].[ClinicId]
+LEFT JOIN [MedicalRecords] AS [m] ON [a].[AppointmentId] = [m].[AppointmentId]
+LEFT JOIN [Invoices] AS [i] ON [a].[AppointmentId] = [i].[AppointmentId]
+WHERE [a].[AppointmentId] = @__id_0
+2026-05-11 00:08:50.991 +03:00 [INF] Executing ViewResult, running view Details.
+2026-05-11 00:08:50.994 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:50.996 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:50.998 +03:00 [INF] Executed ViewResult - view Details executed in 6.6054ms.
+2026-05-11 00:08:50.998 +03:00 [INF] Executed action ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement) in 10.181ms
+2026-05-11 00:08:50.998 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.AppointmentController.Details (ClinicManagement)'
+2026-05-11 00:08:50.998 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Appointment/Details/43 - 200 null text/html; charset=utf-8 11.2049ms
+2026-05-11 00:08:51.275 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:51.276 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:51.276 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:51.280 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:51.283 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:51.285 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:51.286 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:51.286 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 9.7576ms
+2026-05-11 00:08:51.286 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:51.286 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 11.615ms
+2026-05-11 00:08:53.770 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Dashboard - null null
+2026-05-11 00:08:53.771 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.DashboardController.Index (ClinicManagement)'
+2026-05-11 00:08:53.771 +03:00 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller ClinicManagement.Controllers.DashboardController (ClinicManagement).
+2026-05-11 00:08:53.774 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.776 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.778 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.781 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.783 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.785 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.786 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__d_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = @__d_Date_0
+2026-05-11 00:08:53.788 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE [a].[Status]
+    WHEN 0 THEN N'Scheduled'
+    WHEN 1 THEN N'Confirmed'
+    WHEN 2 THEN N'Completed'
+    WHEN 3 THEN N'Cancelled'
+    WHEN 4 THEN N'NoShow'
+    ELSE CAST([a].[Status] AS nvarchar(max))
+END AS [Status], COUNT(*) AS [Count]
+FROM [Appointments] AS [a]
+GROUP BY [a].[Status]
+2026-05-11 00:08:53.790 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Name], COUNT(*) AS [Count]
+FROM [Patients] AS [p]
+INNER JOIN [Appointments] AS [a] ON [p].[PatientId] = [a].[PatientId]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [Specializations] AS [s] ON [d].[SpecializationId] = [s].[SpecializationId]
+GROUP BY [s].[Name]
+2026-05-11 00:08:53.791 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Patients] AS [p]
+2026-05-11 00:08:53.793 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE CONVERT(date, [a].[AppointmentDate]) = CONVERT(date, GETDATE())
+2026-05-11 00:08:53.795 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[IsAvailable] = CAST(1 AS bit)
+2026-05-11 00:08:53.797 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Invoices] AS [i]
+WHERE [i].[PaymentStatus] = 0
+2026-05-11 00:08:53.799 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([i].[PaidAmount]), 0.0)
+FROM [Invoices] AS [i]
+WHERE [i].[PaymentStatus] = 1
+2026-05-11 00:08:53.801 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentId], [a].[AppointmentDate], [a].[AppointmentTime], [a].[ClinicId], [a].[CreatedAt], [a].[DoctorId], [a].[DurationMinutes], [a].[Notes], [a].[PatientId], [a].[ReasonForVisit], [a].[Status], [a].[UpdatedAt], [p].[PatientId], [p].[BloodType], [p].[EmergencyContactName], [p].[EmergencyContactPhone], [p].[InsuranceNumber], [p].[InsuranceProvider], [p].[MedicalHistory], [p].[UserId], [a0].[Id], [a0].[AccessFailedCount], [a0].[Address], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FullName], [a0].[Gender], [a0].[IsActive], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [d].[DoctorId], [d].[Bio], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[SpecializationId], [d].[UserId], [d].[WorkingDays], [d].[YearsOfExperience], [a1].[Id], [a1].[AccessFailedCount], [a1].[Address], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FullName], [a1].[Gender], [a1].[IsActive], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName]
+FROM [Appointments] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientId] = [p].[PatientId]
+INNER JOIN [AspNetUsers] AS [a0] ON [p].[UserId] = [a0].[Id]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorId] = [d].[DoctorId]
+INNER JOIN [AspNetUsers] AS [a1] ON [d].[UserId] = [a1].[Id]
+WHERE CONVERT(date, [a].[AppointmentDate]) = CONVERT(date, GETDATE())
+ORDER BY [a].[AppointmentTime]
+2026-05-11 00:08:53.801 +03:00 [INF] Executing ViewResult, running view Index.
+2026-05-11 00:08:53.804 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:53.806 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-05-11 00:08:53.806 +03:00 [INF] Executed ViewResult - view Index executed in 5.1749ms.
+2026-05-11 00:08:53.807 +03:00 [INF] Executed action ClinicManagement.Controllers.DashboardController.Index (ClinicManagement) in 35.0167ms
+2026-05-11 00:08:53.807 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.DashboardController.Index (ClinicManagement)'
+2026-05-11 00:08:53.807 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Dashboard - 200 null text/html; charset=utf-8 36.4801ms
+2026-05-11 00:08:54.256 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - null null
+2026-05-11 00:08:54.257 +03:00 [INF] Executing endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:54.257 +03:00 [INF] Route matched with {action = "GetUnread", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUnread() on controller ClinicManagement.Controllers.NotificationController (ClinicManagement).
+2026-05-11 00:08:54.261 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-05-11 00:08:54.263 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+2026-05-11 00:08:54.266 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [n].[NotificationId], [n].[CreatedAt], [n].[IsRead], [n].[Message], [n].[Title], [n].[Type], [n].[UserId]
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @__userId_0 AND [n].[IsRead] = CAST(0 AS bit)
+ORDER BY [n].[CreatedAt] DESC
+2026-05-11 00:08:54.266 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType5`2[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType6`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ClinicManagement.Models.Enums.NotificationType, ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ClinicManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-11 00:08:54.266 +03:00 [INF] Executed action ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement) in 9.0339ms
+2026-05-11 00:08:54.266 +03:00 [INF] Executed endpoint 'ClinicManagement.Controllers.NotificationController.GetUnread (ClinicManagement)'
+2026-05-11 00:08:54.267 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5207/Notification/GetUnread - 200 null application/json; charset=utf-8 10.7163ms
