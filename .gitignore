@@ -42,3 +42,7 @@ _ReSharper*/
 # Custom erroneous folders
 .dotnet_home/
 .local/
+
+# Application logs
+logs/
+*.log
